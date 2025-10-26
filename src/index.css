@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Add to existing src/index.css */
+
+@layer components {
+  /* ... existing styles ... */
+  
+  /* Enhanced cursor states */
+  .task-bar {
+    cursor: grab;
+  }
+  
+  .task-bar:active {
+    cursor: grabbing;
+  }
+  
+  .resize-handle {
+    cursor: ew-resize !important;
+  }
+  
+  /* Dragging feedback */
+  .task-bar.opacity-50 {
+    pointer-events: none;
+  }
+  
+  /* Smooth transitions */
+  .task-bar:not(.opacity-50) {
+    transition: box-shadow 0.2s ease, transform 0.1s ease;
+  }
+  
+  .task-bar:hover:not(.opacity-50) {
+    transform: translateY(-1px);
+  }
+}
