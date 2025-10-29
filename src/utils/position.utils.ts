@@ -1,4 +1,3 @@
-// src/utils/position.utils.ts
 
 import {type ViewMode } from '../types/timeline.types';
 import { TIMELINE_CONSTANTS } from '../constants/timeline.constants';

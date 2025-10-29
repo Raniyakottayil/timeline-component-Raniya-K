@@ -1,4 +1,4 @@
-// src/utils/dependency.utils.ts
+
 
 import { type TimelineTask,type DependencyLineData, type TaskPosition } from '../types/timeline.types';
 

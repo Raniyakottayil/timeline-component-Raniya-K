@@ -1,3 +1,4 @@
+// src/components/primitives/Modal.tsx
 
 import React, { useEffect } from 'react';
 
@@ -7,6 +8,7 @@ interface ModalProps {
   title: string;
   children: React.ReactNode;
   footer?: React.ReactNode;
+  variant?: 'center' | 'sidebar';
 }
 
 export const Modal: React.FC<ModalProps> = ({
@@ -15,6 +17,7 @@ export const Modal: React.FC<ModalProps> = ({
   title,
   children,
   footer,
+  variant = 'center',
 }) => {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -34,8 +37,65 @@ export const Modal: React.FC<ModalProps> = ({
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  if (!isOpen && variant === 'center') return null;
 
+  if (variant === 'sidebar') {
+    return (
+      <>
+        {/* Backdrop */}
+        <div
+          className={`fixed inset-0 bg-black transition-opacity duration-300 ${
+            isOpen ? 'bg-opacity-30' : 'bg-opacity-0 pointer-events-none'
+          }`}
+          style={{ zIndex: 49 }}
+          onClick={onClose}
+          aria-hidden="true"
+        />
+        
+        {/* Sidebar Panel */}
+        <aside
+          className={`fixed right-0 top-0 bottom-0 w-full md:w-[480px] bg-white shadow-modal overflow-y-auto transition-transform duration-300 ${
+            isOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+          style={{ zIndex: 50 }}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+          aria-hidden={!isOpen}
+        >
+          {/* Header */}
+          <div className="sticky top-0 bg-white border-b border-neutral-200 px-6 py-4 flex items-center justify-between z-10">
+            <h2 id="modal-title" className="text-lg font-semibold text-neutral-900">
+              {title}
+            </h2>
+            <button
+              onClick={onClose}
+              className="text-neutral-400 hover:text-neutral-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded p-1"
+              aria-label="Close"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          {/* Body */}
+          <div className="p-6">
+            {children}
+          </div>
+          
+          {/* Footer */}
+          {footer && (
+            <div className="sticky bottom-0 bg-white border-t border-neutral-200 px-6 py-4 flex items-center justify-end gap-3">
+              {footer}
+            </div>
+          )}
+        </aside>
+      </>
+    );
+  }
+
+  // Center variant (default)
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center"

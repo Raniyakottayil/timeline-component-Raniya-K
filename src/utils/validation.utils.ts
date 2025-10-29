@@ -1,5 +1,5 @@
 
-import { TimelineTask } from '../types/timeline.types';
+import { type TimelineTask } from '../types/timeline.types';
 
 /**
  * Validate task data

@@ -1,4 +1,3 @@
-// src/components/Timeline/DependencyLine.tsx
 
 import React, { memo } from 'react';
 import {type DependencyLineData } from '../../types/timeline.types';

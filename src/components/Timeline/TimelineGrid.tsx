@@ -1,4 +1,4 @@
-// src/components/Timeline/TimelineGrid.tsx
+
 
 import React, { memo, useMemo } from 'react';
 import {type ViewMode } from '../../types/timeline.types';

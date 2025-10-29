@@ -1,4 +1,3 @@
-// src/components/Timeline/TimelineView.tsx
 
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import {type TimelineViewProps,type TimelineTask, type TaskPosition } from './TimelineView.types';
@@ -19,8 +18,6 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
   rows,
   tasks,
   startDate: initialStartDate,
-  endDate: initialEndDate,
-  viewMode: initialViewMode,
   onTaskUpdate,
   onTaskMove,
 }) => {
@@ -353,11 +350,12 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
       )}
 
       {/* Task Detail Sidebar */}
-      <TaskDetailSidebar
+       <TaskDetailSidebar
         task={selectedTask}
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
         onUpdate={handleTaskUpdate}
+        allTasks={tasks}
       />
     </div>
   );

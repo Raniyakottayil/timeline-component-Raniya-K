@@ -1,4 +1,3 @@
-// src/components/Timeline/TimelineView.types.ts
 
 export interface TimelineTask {
   id: string;
