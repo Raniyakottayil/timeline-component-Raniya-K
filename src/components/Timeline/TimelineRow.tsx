@@ -25,7 +25,6 @@ export const TimelineRow: React.FC<TimelineRowProps> = memo(({
   tasks,
   startDate,
   pixelsPerDay,
-  rowIndex,
   onTaskClick,
   onDragStart,
   onResizeStart,

@@ -60,6 +60,7 @@ export const TaskDetailSidebar: React.FC<TaskDetailSidebarProps> = ({
 		onClose();
 	};
 
+	
 	const handleDelete = () => {
 		if (!task || !onDelete) return;
 

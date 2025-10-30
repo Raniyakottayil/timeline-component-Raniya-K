@@ -355,6 +355,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
         onUpdate={handleTaskUpdate}
+        //  onDelete={handleDelete} 
         allTasks={tasks}
       />
     </div>
